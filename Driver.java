@@ -111,11 +111,13 @@ public class Driver {
         System.out.println("What is the dog's training status?");
         String trainingStatus = scanner.nextLine();
         
+        System.out.println("What is the dog's service country?");
+        String serviceCountry = scanner.nextLine();
+
         System.out.println("Is the dog reserved?");
         boolean reserve = scanner.nextBoolean();
         
-        System.out.println("What is the dog's service country?");
-        String serviceCountry = scanner.nextLine();
+       
         
         Dog newDogObject = new Dog(
                 name,
@@ -161,25 +163,28 @@ public class Driver {
         
         System.out.println("What is the monkey's training status?");
         String trainingStatus = scanner.nextLine();
-        
-        System.out.println("Is the monkey reserved?");
-        boolean reserve = scanner.nextBoolean();
-        
+
         System.out.println("What is the monkey's service country?");
         String serviceCountry = scanner.nextLine();
         
         System.out.println("What is the monkey's species?");
-        String species = scanner.nextLine().toLowerCase();
+        String species = scanner.nextLine();
         
         System.out.println("What is the monkey's body length?");
-        double bodyLength = scanner.nextInt();
-        
-        System.out.println("What is the monkey's tail length?");
-        double tailLength = scanner.nextInt();
-        
-        System.out.println("What is the monkey's height?");
-        double height = scanner.nextInt();
+        String bodyLength = scanner.nextLine();
+        double bodyLengthDbl = Double.parseDouble(bodyLength);
 
+        System.out.println("What is the monkey's tail length?");
+        String tailLength = scanner.nextLine();
+        double tailLengthDbl = Double.parseDouble(tailLength);
+
+        System.out.println("What is the monkey's height?");
+        String height = scanner.nextLine();
+        double heightDbl = Double.parseDouble(height);
+
+        System.out.println("Is the monkey reserved?");
+        boolean reserve = scanner.nextBoolean();
+      
         Monkey newMonkeyObj = new Monkey(
                 name,
                 gender,
@@ -190,9 +195,9 @@ public class Driver {
                 reserve,
                 serviceCountry,
                 species,
-                tailLength,
-                height,
-                bodyLength
+                tailLengthDbl,
+                heightDbl,
+                bodyLengthDbl
         );
         monkeyList.add(newMonkeyObj);
     }
@@ -215,25 +220,19 @@ public class Driver {
 
                      dog.setReserved(true);
                      System.out.println("Great! " + dog.getName() + " has been reserved.");
-                     return; 
-                   } else {
-
-                     System.out.println("Sorry, " + dog.getName() + " is already reserved");
-                     return;
-                   }
-                 }
+                      
+                   }                  }
             }else if(animalChoice.equalsIgnoreCase("monkey")) {
                 for(Monkey monkey: monkeyList) {
                    if(monkey.getInServiceLocation().equalsIgnoreCase(serviceCountry) && !monkey.getReserved()) {
 
                      monkey.setReserved(true);
                      System.out.println("Great! " + monkey.getName() + " has been reserved.");
-                     return; 
-                   }else {
+                      
+                   } 
 
-                    System.out.println("Sorry, " + monkey.getName() + " is already reserved");
-                   }
-                 }
+                }
+
            
             }else {
               return;
@@ -268,6 +267,7 @@ public class Driver {
                     System.out.println("status: " + status);
                     System.out.println("country: " +  country);
                     System.out.println("reserved: " +  reserved);
+                    System.out.println(); 
                 }
             }
 
@@ -283,9 +283,52 @@ public class Driver {
                       System.out.println("status: " + status);
                       System.out.println("country: " +  country);
                       System.out.println("reserved: " +  reserved);
+                      System.out.println();
+                      
                   }
              }
 
+             if(type.equals("available")) {
+
+                    for(Dog dog: dogList) {
+
+                      String name = dog.getName();
+                      String status = dog.getTrainingStatus();
+                      String country = dog.getAcquisitionLocation();
+                      boolean reserved = dog.getReserved();
+
+                      if(!reserved && !status.equals("in service")){
+                        System.out.println("name: " + name);
+                        System.out.println("status: " + status);
+                        System.out.println("country: " +  country);
+                        System.out.println("reserved: " +  reserved);
+                        System.out.println();
+                        
+                      }
+                    }
+
+                    for(Monkey monkey: monkeyList) {
+
+                      String name = monkey.getName();
+                      String status = monkey.getTrainingStatus();
+                      String country = monkey.getAcquisitionLocation();
+                      boolean reserved = monkey.getReserved();
+
+                      if(!reserved && !status.equals("in service")){
+                        System.out.println("name: " + name);
+                        System.out.println("status: " + status);
+                        System.out.println("country: " +  country);
+                        System.out.println("reserved: " +  reserved);
+                        System.out.println();
+                        
+                      }
+                    }
+
+                }
+
+
+             }
+
         }
-}
+
 
