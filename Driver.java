@@ -224,7 +224,7 @@ public class Driver {
 
            if(animalChoice.equalsIgnoreCase("dog")) {
                  for(Dog dog: dogList) {
-                   if(dog.getInServiceLocation().equalsIgnoreCase(serviceCountry) && !dog.getReserved()) {
+                   if(dog.getInServiceLocation().equalsIgnoreCase(serviceCountry) && !dog.getReserved() && dog.getTrainingStatus().equalsIgnoreCase("in service")) {
 
                      dog.setReserved(true);
                      System.out.println("Great! " + dog.getName() + " has been reserved.");
@@ -232,7 +232,7 @@ public class Driver {
                    }                  }
             }else if(animalChoice.equalsIgnoreCase("monkey")) {
                 for(Monkey monkey: monkeyList) {
-                   if(monkey.getInServiceLocation().equalsIgnoreCase(serviceCountry) && !monkey.getReserved()) {
+                   if(monkey.getInServiceLocation().equalsIgnoreCase(serviceCountry) && !monkey.getReserved() && monkey.getTrainingStatus().equalsIgnoreCase("in service")) {
 
                      monkey.setReserved(true);
                      System.out.println("Great! " + monkey.getName() + " has been reserved.");
@@ -243,6 +243,7 @@ public class Driver {
 
            
             }else {
+                System.out.println("Sorry, you need select either a dog or a monkey");
               return;
             }
         }
