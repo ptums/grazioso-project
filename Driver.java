@@ -14,25 +14,33 @@ public class Driver {
         while(start) {
             displayMenu();
             char option = scnr.nextLine().charAt(0);
-
-            if(option == '1'){
-                intakeNewDog(scnr);
-            } else if(option == '2'){
-                intakeNewMonkey(scnr);
-            } else if(option == '3') {
-                reserveAnimal(scnr);
-            }else if (option == '4') {
-                printAnimals("dog");
-            }else if(option == '5'){
-                printAnimals("monkey");
-            }else if(option == '6') {
-                printAnimals("available");
-            }else if(option == 'q') {
-                start = false;
-            }else {
-                System.out.println("Invalid option, please enter a valid option.");
+             
+            switch(option) {
+                case '1':
+                    intakeNewDog(scnr);
+                    break;
+                case '2':
+                    intakeNewMonkey(scnr);
+                    break;
+                case '3':
+                    reserveAnimal(scnr);
+                    break;
+                case '4':
+                    printAnimals("dogs");
+                    break;
+                case '5':
+                    printAnimals("monkey");
+                    break;
+                case '6':
+                    printAnimals("available");
+                    break;
+                case 'q':
+                    start = false;
+                    break;
+                default:
+                   System.out.println("Invalid option, please enter a valid option.");
             }
-        }
+       }
     }
 
     // This method prints the menu options
